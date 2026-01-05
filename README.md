@@ -16,4 +16,5 @@ So you have to:
 1. Auto-Filtering: Automatically removes duplicate subdomains found by both sources.
 2. Sorting: Results are saved in alphabetical order for better readability.
 3. Dual-Source: Combines historical web data with active tool discovery.
+4. The tool depends on 3 main resources: `subdomainfinder.c99.nl` , `subfinder tool` and `shrewdeye.app`
 ---
