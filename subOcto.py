@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import subprocess
 import os
-
 banner = r'''
  ██████  █    ██  ▄▄▄▄    ▒█████   ▄████▄  ▄▄▄█████▓ ▒█████  
 ▒██    ▒  ██  ▓██▒▓█████▄ ▒██▒  ██▒▒██▀ ▀█  ▓  ██▒ ▓▒▒██▒  ██▒
@@ -23,7 +22,7 @@ domain = input("Please add the domain > ")
 file_name = f"{domain}_subs.txt"
 
 def subDomainFinderWebsite(domain, file_name):
-    print("First you should know the history in the website")
+    print("First you should know the history for: Subdomainfinder.c99.nl> ")
     today =input("Enter scan date (YYYY-MM-DD): ")
     print(f"[*] Running Subdomainfinder.c99.nl for: {domain}")
     url = f"https://subdomainfinder.c99.nl/scans/{today}/{domain}"
@@ -67,6 +66,19 @@ def subFinderTool(domain, file_name):
             with open(file_name,"a") as f:
                 f.write(subfinder_subs+"\n")
 
+def shrewdeyeWebsite(file_name,domain):
+    print(f"[*] Running shrewdeye.app for {domain}...")
+    file_url = f"https://shrewdeye.app/search/{domain}"
+    txt_url= f"https://shrewdeye.app/domains/{domain}.txt"
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    }
+    with requests.get(file_url, headers=headers, timeout=10) as r:
+        if r.status_code == 200:
+            with requests.get(txt_url, headers=headers, timeout=10) as r:
+                with open(file_name, "a", encoding="utf-8") as f:
+                    f.write(r.text)
+
 def filter_results(file_path):
     if os.path.exists(file_path):
         print("[*] Filtering duplicates...")
@@ -80,5 +92,6 @@ def filter_results(file_path):
 
 subDomainFinderWebsite(domain, file_name)
 subFinderTool(domain, file_name)
+shrewdeyeWebsite(file_name,domain)
 
 filter_results(file_name)
