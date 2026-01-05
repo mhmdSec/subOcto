@@ -88,7 +88,8 @@ def filter_results(file_path):
         with open(file_path, "w") as f:
             for line in unique_lines:
                 f.write(line + "\n")
-        print(f"[+] Done! Total unique subdomains: {len(unique_lines)}")
+        print(f"[#] Done! Total unique subdomains: {len(unique_lines)}")
+        print(f"[#] Subdomains saved at ==> {file_name}")
 
 subDomainFinderWebsite(domain, file_name)
 subFinderTool(domain, file_name)
