@@ -1,6 +1,6 @@
 # subOcto
 ## How it works ?
-The tool is designed to get Subdomains from: `https://subdomainfinder.c99.nl` and `subfinder` tool.  
+The tool is designed to get Subdomains as As much as possible.
 
 So you have to:
 1. Go to `https://subdomainfinder.c99.nl` and make an experimental try to get `history` from the link :  
